@@ -1,0 +1,24 @@
+$white: #F5F1ED;
+$black: #252323;
+$red:   #C1292E;
+
+$colors: () !default;
+$colors: map-merge(
+    (
+        "white": $white,
+        "black": $black,
+        "red":   $red
+    ),
+    $colors
+);
+
+$theme-colors: () !default;
+$theme-colors: map-merge(
+    (
+        "white": $white,
+        "black": $black,
+        "red":   $red
+    ),
+    $theme-colors
+);
+

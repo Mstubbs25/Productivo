@@ -1,0 +1,15 @@
+a{
+    text-decoration: none;
+    color: $white;
+    position: relative;
+    
+
+    &:hover{
+        color: $red;
+        border-bottom: 1px solid $white;
+        padding-bottom: 4px;
+        transition: 400ms ease-in-out;
+    }
+
+    
+}

@@ -1,23 +1,35 @@
 import { Col, Row } from "react-bootstrap";
 
 const NavSidebar = (props: {
-    logo: { name: string, to: string }
+    // logo: { name: string, to: string }
     links: Array<{ name: string, to: string }>
 }) => {
-    const { logo, links } = props;
+
+    const { links } = props;
+
     const NavLinks: any = () => links.map((link: {name: string, to: string}) => 
-    <li key={link.name}>
-        <a href={link.to}>{link.name}</a>
-    </li>);
+        <div className="list-panel d-flex justify-content-center align-items-center">
+            <li key={link.name}>
+                <a href={link.to}>{link.name}</a>
+            </li>
+        </div>
+    );
 
     return (
-        <div style={{background: "black", height: "500px", width: "auto"}}>
-            <Row>
-                <Col>
+        <nav className="nav position-absolute">
+            <Row className="h-100">
+                <Col className="d-flex col-12 justify-content-center align-items-center h-25">
+                    <div className="avatar">
 
+                    </div>
+                </Col>
+                <Col className="col-12 d-flex justify-content-center">
+                    <ul className="w-100 d-flex flex-column justify-content-around">
+                        <NavLinks/>
+                    </ul>
                 </Col>
             </Row>
-        </div>
+        </nav>
     )
 
 }

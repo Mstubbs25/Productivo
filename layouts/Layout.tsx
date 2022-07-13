@@ -1,8 +1,10 @@
 import Head from 'next/head'
+import { useContext } from 'react';
+import { AppContext } from '../context/context';
+import LoginSidebar from '../modules/LoginSidebar';
 import NavSidebar from '../modules/Nav';
 
 const navigation = {
-    logo: { name: "", to: "/" },
     links: [
       { name: "Dashboard", to: "/dashboard" },
       { name: "ToDo", to: "/todo" },
@@ -11,9 +13,14 @@ const navigation = {
       { name: "Data", to: "/data" },
       { name: "Settings", to: "/settings" }
     ]
-  }
+}
+
+
 
 const Layout = ({children, ...props}) => {
+
+    const { links } = navigation;
+    const {isAuthenticated} = useContext(AppContext)
 
     return(
         <div className="bg-black overflow-hidden">
@@ -22,7 +29,11 @@ const Layout = ({children, ...props}) => {
                 <meta name="description" content="Productivity App" />
                 <meta httpEquiv="Content-type" content="text/html; charset=UTF-8"></meta>
             </Head>
-            <NavSidebar/>
+            {isAuthenticated ? 
+            <NavSidebar links={links}/> 
+            : 
+            <LoginSidebar/> 
+            }
             <main {...props} className="overflow-hidden position-relative">
                 {children}
             </main>
